@@ -24,4 +24,5 @@ export default (app: Application) => {
   router.get('/participant_rank_list_data', controller.data.participantRankListData);
 
   router.get('/legend', controller.data.legend);
+  router.get('/legend_request', controller.data.legendRequest);
 };

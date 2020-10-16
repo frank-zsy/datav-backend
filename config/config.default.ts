@@ -72,6 +72,10 @@ export default (appInfo: EggAppInfo) => {
     events: ['WatchEvent', 'ForkEvent', 'IssuesEvent', 'PullRequestEvent', 'IssueCommentEvent', 'PullRequestReviewCommentEvent'],
   };
 
+  config.deploy = {
+    baseUrl: '',
+  };
+
   config.cluster = {
     listen: {
       port: 8672,

@@ -347,6 +347,16 @@ export default class DataController extends Controller {
     }).slice(0, config.activityRankListNumber);
   }
 
+  public async legendRequest() {
+    const proj = this.getProj();
+    this.ctx.body = [
+      {
+        img: `${this.ctx.app.config.deploy.baseUrl}/legend?base_proj=${proj}`,
+        url: ''
+      },
+    ];
+  }
+
   public async legend() {
     const config = this.getConfig();
     const projects = this.getProjects();
