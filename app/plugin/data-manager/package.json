@@ -1,0 +1,7 @@
+{
+  "name": "data-manager",
+  "description": "Data manager for open source projects",
+  "eggPlugin": {
+    "name": "dataMgr"
+  }
+}
