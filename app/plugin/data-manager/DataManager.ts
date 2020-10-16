@@ -1,6 +1,7 @@
 import { Application } from 'egg';
 import ClickHouse = require('@apla/clickhouse');
 import { IssueData, PullData, QueryResult, RepoData } from './types';
+import requestretry from 'requestretry';
 
 export class DataManager {
 
@@ -13,7 +14,9 @@ export class DataManager {
     this.app = app;
     this.repoData = new Map<string, any>();
     this.userData = new Map<string, string>();
-    this.clickhouse = new ClickHouse(app.config.clickhouse.server);
+    if (!app.config.clickhouse.queryUrl) {
+      this.clickhouse = new ClickHouse(app.config.clickhouse.server);
+    }
   }
 
   public getData(repoName: string): RepoData | undefined {
@@ -160,7 +163,22 @@ export class DataManager {
   }
 
   private async query<T = any>(q: string): Promise<T | undefined> {
-    return this.clickhouse.querying(q);
+    if (!this.app.config.clickhouse.queryUrl) {
+      return this.clickhouse.querying(q);
+    } else {
+      return new Promise(resolve => {
+        requestretry({
+          url: this.app.config.clickhouse.queryUrl,
+          method: 'POST',
+          form: {
+            query: q,
+          }
+        }, (err: any, _: any, body: string) => {
+          if (err) resolve({ data: [] } as any);
+          else resolve(JSON.parse(body));
+        });
+      });
+    }
   }
 }
 

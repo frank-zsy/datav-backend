@@ -64,6 +64,7 @@ export default (appInfo: EggAppInfo) => {
       port: 8123,
       format: 'JSON',
     },
+    queryUrl: 'http://localhost/query',
     db: 'github_log',
     tables: ['year2015', 'year2016', 'year2017', 'year2018', 'year2019', 'year2020'],
     // tables: ['year2020'],
