@@ -63,7 +63,7 @@ export default class DataController extends Controller {
       const e = new Date(startTime.getTime() + i * timeInterval);
       const s = new Date(e.getTime() - timeInterval);
       projects.forEach((project, index) => {
-        const activityData = this.ctx.service.calculator.activity(project.repos.map(r => this.app.dataMgr.getData(r.name)).filter(r => r !== undefined) as any, startTime, endTime);
+        const activityData = this.ctx.service.calculator.activity(project.repos.map(r => this.app.dataMgr.getData(r.name)).filter(r => r !== undefined) as any, s, e);
         result.push({
           x: dateformat(e, 'yyyy/mm/dd HH:MM:ss', true),
           y: Math.round(activityData.totalActivity),
