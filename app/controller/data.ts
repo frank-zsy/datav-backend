@@ -63,16 +63,10 @@ export default class DataController extends Controller {
       const e = new Date(startTime.getTime() + i * timeInterval);
       const s = new Date(e.getTime() - timeInterval);
       projects.forEach((project, index) => {
-        let totalActivity = 0;
-        project.repos.forEach(repo => {
-          const repoData = this.app.dataMgr.getData(repo.name);
-          if (!repoData) return;
-          const activityData = this.ctx.service.calculator.activity(repoData, s, e);
-          totalActivity += activityData.totalActivity;
-        });
+        const activityData = this.ctx.service.calculator.activity(project.repos.map(r => this.app.dataMgr.getData(r.name)).filter(r => r !== undefined) as any, startTime, endTime);
         result.push({
           x: dateformat(e, 'yyyy/mm/dd HH:MM:ss', true),
-          y: Math.round(totalActivity),
+          y: Math.round(activityData.totalActivity),
           s: `系列${index + 1}`,
         });
       });
@@ -118,6 +112,57 @@ export default class DataController extends Controller {
       });
     }
     this.ctx.body = result;
+  }
+
+  public async relationData() {
+    const config = this.getConfig();
+    const timeRange = this.getTime();
+    const index = this.ctx.query['index'];
+    if (!config || !timeRange || index === undefined) {
+      this.ctx.body = 'Not found';
+      return;
+    }
+    const { startTime, endTime } = timeRange;
+
+    const i = Math.abs(parseInt(index));
+    const projects = this.getProjects();
+    const project = projects[i % projects.length];
+    const repos = project.repos;
+
+    const repoData = repos.map(repo => this.app.dataMgr.getData(repo.name)).filter(r => r !== undefined) as any;
+    const activityData = this.ctx.service.calculator.activity(repoData, startTime, endTime);
+    const relationData = this.ctx.service.calculator.relation(repoData, startTime, endTime);
+
+    const activityArr = Array.from(activityData.activityMap.entries()).sort((a, b) => {
+      if (a[1] < b[1]) return 1;
+      return -1;
+    }).slice(0, 50);
+
+    const result: { nodes: { name: string; value: number; category: number }[]; links: { source: string; target: string; value: number }[] } = {
+      nodes: [],
+      links: [],
+    };
+
+    const series = 9;
+    activityArr.forEach(a => {
+      result.nodes.push({
+        name: a[0],
+        value: Math.round(Math.sqrt(a[1])),
+        category: (result.nodes.length % series) + 1,
+      });
+    });
+
+    relationData.forEach(r => {
+      if (result.nodes.findIndex(n => n.name === r.login1) >= 0 && result.nodes.findIndex(n => n.name === r.login2) >= 0) {
+        result.links.push({
+          source: r.login1,
+          target: r.login2,
+          value: Math.round(20 / r.relation),
+        });
+      }
+    });
+
+    this.ctx.body = [result];
   }
 
   public async issueTitle() {
@@ -227,8 +272,8 @@ export default class DataController extends Controller {
       });
     });
     result.sort((a, b) => {
-      if (parseInt(a.value) < parseInt(b.value)) return -1;
-      return 1;
+      if (parseInt(a.value) < parseInt(b.value)) return 1;
+      return -1;
     });
     this.ctx.body = result;
   }
@@ -258,23 +303,20 @@ export default class DataController extends Controller {
     const activityList: { login: string; score: number }[] = [];
     const result: { x: string; y: number }[] = [];
     let totalActivity = 0;
-    repos.forEach(repo => {
-      const repoData = this.app.dataMgr.getData(repo.name);
-      if (!repoData) return;
-      const activityData = this.ctx.service.calculator.activity(repoData, startTime, endTime);
-      for (const [login, score] of activityData.activityMap) {
-        const item = activityList.find(i => i.login === login);
-        if (item) {
-          item.score += score;
-        } else {
-          activityList.push({
-            login,
-            score,
-          });
-        }
-        totalActivity += score;
+
+    const activityData = this.ctx.service.calculator.activity(project.repos.map(r => this.app.dataMgr.getData(r.name)).filter(r => r !== undefined) as any, startTime, endTime);
+    for (const [login, score] of activityData.activityMap) {
+      const item = activityList.find(i => i.login === login);
+      if (item) {
+        item.score += score;
+      } else {
+        activityList.push({
+          login,
+          score,
+        });
       }
-    });
+      totalActivity += score;
+    }
     activityList.sort((a, b) => {
       if (a.score < b.score) return 1;
       return -1;
@@ -319,19 +361,14 @@ export default class DataController extends Controller {
     const projects = this.getProjects();
     const rankList: { login: string, proj: string; score: number }[] = [];
     projects.forEach(project => {
-      const repos = project.repos;
-      repos.forEach(repo => {
-        const repoData = this.app.dataMgr.getData(repo.name);
-        if (!repoData) return;
-        const activityData = this.ctx.service.calculator.activity(repoData, startTime, endTime);
-        for (const [login, score] of activityData.activityMap) {
-          rankList.push({
-            login,
-            score,
-            proj: project.name,
-          });
-        }
-      });
+      const activityData = this.ctx.service.calculator.activity(project.repos.map(r => this.app.dataMgr.getData(r.name)).filter(r => r !== undefined) as any, startTime, endTime);
+      for (const [login, score] of activityData.activityMap) {
+        rankList.push({
+          login,
+          score,
+          proj: project.name,
+        });
+      }
     });
     rankList.sort((a, b) => {
       if (a.score < b.score) return 1;
