@@ -114,6 +114,14 @@ export default class DataController extends Controller {
     this.ctx.body = result;
   }
 
+  public async relationTitle() {
+    this.ctx.body = [
+      {
+        value: this.getConfig()?.relationTitle ?? 'Not found',
+      },
+    ];
+  }
+
   public async relationData() {
     const config = this.getConfig();
     const timeRange = this.getTime();

@@ -24,6 +24,7 @@ export default (app: Application) => {
   router.get('/project_name', controller.data.projectName);
   router.get('/participant_rank_list_data', controller.data.participantRankListData);
 
+  router.get('/relation_title', controller.data.relationTitle);
   router.get('/relation_data', controller.data.relationData);
 
   router.get('/legend', controller.data.legend);

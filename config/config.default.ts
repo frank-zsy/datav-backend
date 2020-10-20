@@ -22,6 +22,7 @@ export default (appInfo: EggAppInfo) => {
       attentionTitle: '< 关注度趋势 >',
       issueTitle: '< Issue 情况 >',
       pullTitle: '< PR 情况 >',
+      relationTitle: '< 协作网络图 >',
       participantNumberTitle: '< 项目参与人数 >',
       participantRatioTitle: '< 开发者活跃比例 >',
       participantRankListTitle: '< 开发者活跃排行 >',
