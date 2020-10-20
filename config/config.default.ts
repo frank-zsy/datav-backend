@@ -17,14 +17,14 @@ export default (appInfo: EggAppInfo) => {
 
   config.datav = {
     nacos: {
-      title: '开源竞品大屏',
-      activityTitle: '活跃度变化趋势',
-      attentionTitle: '关注度变化趋势',
-      issueTitle: 'Issue 情况',
-      pullTitle: 'PR 情况',
-      participantNumberTitle: '项目参与人数',
-      participantRatioTitle: '开发者活跃比例',
-      participantRankListTitle: '开发者活跃排行',
+      title: '<-开源竞品大屏->',
+      activityTitle: '<活跃度变化趋势>',
+      attentionTitle: '<关注度变化趋势>',
+      issueTitle: '<Issue 情况>',
+      pullTitle: '<PR 情况>',
+      participantNumberTitle: '<项目参与人数>',
+      participantRatioTitle: '<开发者活跃比例>',
+      participantRankListTitle: '<开发者活跃排行>',
 
       projects: [
         {
@@ -43,12 +43,12 @@ export default (appInfo: EggAppInfo) => {
       ],
 
       colors: [
-        '#096dd9',
-        '#91d5ff',
-        '#1e5d23',
-        '#69ba6d',
-        '#faad14',
-        '#b17a7d',
+        '#03ffff',
+        '#33b4ff',
+        '#8b73ff',
+        '#cc529b',
+        '#eb6b63',
+        '#d6c25e',
       ],
 
       activityRankListNumber: 50,
