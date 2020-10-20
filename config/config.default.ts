@@ -56,6 +56,52 @@ export default (appInfo: EggAppInfo) => {
       participantRatioThreshold: 5,
       dataPartition: 5,
     },
+    ai: {
+      title: '< AI 项目大屏 >',
+      activityTitle: '< 活跃度趋势 >',
+      attentionTitle: '< 关注度趋势 >',
+      issueTitle: '< Issue 情况 >',
+      pullTitle: '< PR 情况 >',
+      relationTitle: '< 协作网络图 >',
+      participantNumberTitle: '< 项目参与人数 >',
+      participantRatioTitle: '< 开发者活跃比例 >',
+      participantRankListTitle: '< 开发者活跃排行 >',
+
+      projects: [
+        {
+          name: 'tensorflow',
+          repos: [{ id: '45717250', name: 'tensorflow/tensorflow' }],
+        }, {
+          name: 'pytorch',
+          repos: [{ id: '65600975', name: 'pytorch/pytorch' }],
+        }, {
+          name: 'Paddle',
+          repos: [{ id: '65711522', name: 'PaddlePaddle/Paddle' }],
+        }, {
+          name: 'mxnet',
+          repos: [{ id: '34864402', name: 'apache/incubator-mxnet' }],
+        }, {
+          name: 'mmf',
+          repos: [{ id: '138831170', name: 'facebookresearch/mmf' }],
+        }, {
+          name: 'singa',
+          repos: [{ id: '33294317', name: 'apache/singa' }],
+        },
+      ],
+
+      colors: [
+        '#03ffff',
+        '#33b4ff',
+        '#8b73ff',
+        '#cc529b',
+        '#eb6b63',
+        '#d6c25e',
+      ],
+
+      activityRankListNumber: 50,
+      participantRatioThreshold: 5,
+      dataPartition: 5,
+    },
   };
 
   config.clickhouse = {
