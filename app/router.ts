@@ -21,6 +21,7 @@ export default (app: Application) => {
   router.get('/pull_data', controller.data.pullData);
   router.get('/participant_number_data', controller.data.participantNumberData);
   router.get('/participant_ratio_data', controller.data.participantRatioData);
+  router.get('/project_name', controller.data.projectName);
   router.get('/participant_rank_list_data', controller.data.participantRankListData);
 
   router.get('/relation_data', controller.data.relationData);

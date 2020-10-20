@@ -286,6 +286,21 @@ export default class DataController extends Controller {
     ];
   }
 
+  public async projectName() {
+    const projects = this.getProjects();
+    const index = this.ctx.query['index'];
+    if (!projects || index === undefined) {
+      this.ctx.body = 'Not found';
+      return;
+    }
+    const i = Math.abs(parseInt(index));
+    this.ctx.body = [
+      {
+        value: projects[i % projects.length].name,
+      }
+    ];
+  }
+
   public async participantRatioData() {
     const config = this.getConfig();
     const timeRange = this.getTime();
@@ -299,7 +314,6 @@ export default class DataController extends Controller {
     const i = Math.abs(parseInt(index));
     const projects = this.getProjects();
     const project = projects[i % projects.length];
-    const repos = project.repos;
     const activityList: { login: string; score: number }[] = [];
     const result: { x: string; y: number }[] = [];
     let totalActivity = 0;
