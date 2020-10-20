@@ -402,15 +402,16 @@ export default class DataController extends Controller {
       return;
     }
     const colors = config.colors;
+    // let svgInnerContent = '<rect x="0" y="0" width="400" height="140" style="fill:#41495C99" />';
     let svgInnerContent = '';
     projects.forEach((project, index) => {
-      svgInnerContent += `<rect x="${10 + (index % 2) * 200}" y="${15 + (Math.floor(index / 2)) * 40}" width="30" height="30" fill="${colors[index]}" />`;
-      svgInnerContent += `<rect x="${40 + (index % 2) * 200}" y="${15 + (Math.floor(index / 2)) * 40}" width="150" height="30" fill="#0000007F" />`
-      svgInnerContent += `<text x="${115 + (index % 2) * 200}" y="${30 + (Math.floor(index / 2)) * 40}">${project.name}</text>`;
+      svgInnerContent += `<rect x="${30 + (index % 2) * 230}" y="${15 + (Math.floor(index / 2)) * 40}" width="30" height="30" fill="${colors[index]}" />`;
+      svgInnerContent += `<rect x="${60 + (index % 2) * 230}" y="${15 + (Math.floor(index / 2)) * 40}" width="170" height="30" fill="#000000CC" />`
+      svgInnerContent += `<text x="${145 + (index % 2) * 230}" y="${30 + (Math.floor(index / 2)) * 40}">${project.name}</text>`;
     });
 
     const svgContent = `<svg
-xmlns="http://www.w3.org/2000/svg" width="400" height="140" background="">
+xmlns="http://www.w3.org/2000/svg" width="460" height="140" background="">
 <style type="text/css"><![CDATA[
 text {
   text-anchor: middle;
@@ -421,7 +422,6 @@ text {
   font-weight: 700;
 }
 ]]></style>
-<rect x="0" y="0" width="400" height="140" style="fill:#41495C99" />
 ${svgInnerContent}
 </svg>
 `;
