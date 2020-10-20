@@ -454,7 +454,7 @@ ${svgInnerContent}
   public async startTime() {
     this.ctx.body = [
       {
-        date: dateformat(new Date(new Date().getTime() - 30 * 24 * 60 * 60 * 1000), 'yyyy-mm-dd', true),
+        date: dateformat(new Date(new Date().getTime() - 90 * 24 * 60 * 60 * 1000), 'yyyy-mm-dd', true),
       },
     ];
   }
