@@ -405,9 +405,9 @@ export default class DataController extends Controller {
     // let svgInnerContent = '<rect x="0" y="0" width="400" height="140" style="fill:#41495C99" />';
     let svgInnerContent = '';
     projects.forEach((project, index) => {
-      svgInnerContent += `<rect x="${30 + (index % 2) * 230}" y="${15 + (Math.floor(index / 2)) * 40}" width="200" height="30" fill="#000000CC" />`
-      svgInnerContent += `<rect x="${32 + (index % 2) * 230}" y="${17 + (Math.floor(index / 2)) * 40}" width="26" height="26" fill="${colors[index]}" />`;
-      svgInnerContent += `<text x="${145 + (index % 2) * 230}" y="${30 + (Math.floor(index / 2)) * 40}">${project.name}</text>`;
+      svgInnerContent += `<rect x="${20 + (index % 2) * 220}" y="${15 + (Math.floor(index / 2)) * 40}" width="200" height="30" fill="#000000CC" />`
+      svgInnerContent += `<rect x="${22 + (index % 2) * 220}" y="${17 + (Math.floor(index / 2)) * 40}" width="26" height="26" fill="${colors[index]}" />`;
+      svgInnerContent += `<text x="${135 + (index % 2) * 220}" y="${30 + (Math.floor(index / 2)) * 40}">${project.name}</text>`;
     });
 
     const svgContent = `<svg
