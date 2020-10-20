@@ -18,8 +18,8 @@ export default (appInfo: EggAppInfo) => {
   config.datav = {
     nacos: {
       title: '< 开源竞品大屏 >',
-      activityTitle: '< 活跃度变化趋势 >',
-      attentionTitle: '< 关注度变化趋势 >',
+      activityTitle: '< 活跃度趋势 >',
+      attentionTitle: '< 关注度趋势 >',
       issueTitle: '< Issue 情况 >',
       pullTitle: '< PR 情况 >',
       participantNumberTitle: '< 项目参与人数 >',
