@@ -7,6 +7,7 @@ export default class AppBootHook {
   }
 
   async serverDidReady() {
+    this.app.dataMgr.loadData();
     this.app.dataMgr.run();
   }
 }

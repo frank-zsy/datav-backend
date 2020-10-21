@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "@types/mocha": "^2.2.40",
-    "@types/node": "^7.0.12",
+    "@types/node": "^14.3.0",
     "@types/requestretry": "^1.12.7",
     "@types/supertest": "^2.0.0",
     "autod": "^3.0.1",
