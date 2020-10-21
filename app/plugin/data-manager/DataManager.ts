@@ -267,6 +267,18 @@ export class DataManager {
     });
     return {
       ...r,
+      stars: r.stars.map(s => {
+        return {
+          id: s.id,
+          time: new Date(s.time),
+        };
+      }),
+      forks: r.forks.map(f => {
+        return {
+          id: f.id,
+          time: new Date(f.time),
+        };
+      }),
       issues,
       pulls,
     }
