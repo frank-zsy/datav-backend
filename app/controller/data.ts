@@ -344,14 +344,17 @@ export default class DataController extends Controller {
       return -1;
     });
     let totalRatio = 0;
-    activityList.forEach(a => {
+    activityList.every(a => {
       const ratio = Math.round(a.score * 100 / totalActivity);
-      if (ratio >= config.participantRatioThreshold) {
+      if ((result.length < config.participantRatioMin) || (ratio >= config.participantRatioThreshold && result.length < config.participantRatioMax)) {
         totalRatio += ratio;
         result.push({
           x: a.login,
           y: ratio,
         });
+      }
+      else {
+        return false;
       }
     });
     if (totalRatio < 100) {

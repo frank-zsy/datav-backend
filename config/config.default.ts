@@ -54,6 +54,8 @@ export default (appInfo: EggAppInfo) => {
 
       activityRankListNumber: 50,
       participantRatioThreshold: 5,
+      participantRatioMin: 4,
+      participantRatioMax: 9,
       dataPartition: 5,
     },
     ai: {
@@ -100,6 +102,8 @@ export default (appInfo: EggAppInfo) => {
 
       activityRankListNumber: 50,
       participantRatioThreshold: 5,
+      participantRatioMin: 4,
+      participantRatioMax: 9,
       dataPartition: 5,
     },
   };
