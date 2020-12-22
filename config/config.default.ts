@@ -17,7 +17,7 @@ export default (appInfo: EggAppInfo) => {
 
   config.datav = {
     nacos: {
-      title: '< 开源竞品大屏 >',
+      title: 'Nacos 开源影响力大屏',
       activityTitle: '< 活跃度趋势 >',
       attentionTitle: '< 关注度趋势 >',
       issueTitle: '< Issue 情况 >',
@@ -59,6 +59,54 @@ export default (appInfo: EggAppInfo) => {
         }, {
           name: 'apollo',
           repos: [{ id: '53127403', name: 'ctripcorp/apollo' }],
+        },
+      ],
+
+      colors: [
+        '#03ffff',
+        '#33b4ff',
+        '#8b73ff',
+        '#cc529b',
+        '#eb6b63',
+        '#d6c25e',
+      ],
+
+      activityRankListNumber: 50,
+      participantRatioThreshold: 5,
+      participantRatioMin: 4,
+      participantRatioMax: 9,
+      dataPartition: 5,
+    },
+    dubbo: {
+      title: 'Dubbo 开源影响力大屏',
+      activityTitle: '< 活跃度趋势 >',
+      attentionTitle: '< 关注度趋势 >',
+      issueTitle: '< Issue 情况 >',
+      pullTitle: '< PR 情况 >',
+      relationTitle: '< 协作网络图 >',
+      participantNumberTitle: '< 项目参与人数 >',
+      participantRatioTitle: '< 开发者活跃比例 >',
+      participantRankListTitle: '< 开发者活跃排行 >',
+
+      projects: [
+        {
+          name: 'dubbo',
+          repos: [{ id: '45717250', name: 'apache/dubbo' }],
+        }, {
+          name: 'SOFA',
+          repos: [{ id: '65600975', name: 'sofastack/sofa-rpc' }],
+        }, {
+          name: 'gRPC',
+          repos: [{ id: '65711522', name: 'grpc/grpc' }],
+        }, {
+          name: 'bRPC',
+          repos: [{ id: '34864402', name: 'apache/incubator-brpc' }],
+        }, {
+          name: 'Tars',
+          repos: [{ id: '138831170', name: 'TarsCloud/Tars' }],
+        }, {
+          name: 'ServiceComb',
+          repos: [{ id: '33294317', name: 'apache/servicecomb-java-chassis' }],
         },
       ],
 
