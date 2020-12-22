@@ -91,22 +91,22 @@ export default (appInfo: EggAppInfo) => {
       projects: [
         {
           name: 'dubbo',
-          repos: [{ id: '45717250', name: 'apache/dubbo' }],
+          repos: [{ id: '4710920', name: 'apache/dubbo' }],
         }, {
           name: 'SOFA',
-          repos: [{ id: '65600975', name: 'sofastack/sofa-rpc' }],
+          repos: [{ id: '128709824', name: 'sofastack/sofa-rpc' }],
         }, {
           name: 'gRPC',
-          repos: [{ id: '65711522', name: 'grpc/grpc' }],
+          repos: [{ id: '27729880', name: 'grpc/grpc' }],
         }, {
           name: 'bRPC',
-          repos: [{ id: '34864402', name: 'apache/incubator-brpc' }],
+          repos: [{ id: '102343794', name: 'apache/incubator-brpc' }],
         }, {
           name: 'Tars',
-          repos: [{ id: '138831170', name: 'TarsCloud/Tars' }],
+          repos: [{ id: '79316451', name: 'TarsCloud/Tars' }],
         }, {
           name: 'ServiceComb',
-          repos: [{ id: '33294317', name: 'apache/servicecomb-java-chassis' }],
+          repos: [{ id: '91674936', name: 'apache/servicecomb-java-chassis' }],
         },
       ],
 
