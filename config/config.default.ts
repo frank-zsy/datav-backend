@@ -125,6 +125,99 @@ export default (appInfo: EggAppInfo) => {
       participantRatioMax: 9,
       dataPartition: 5,
     },
+    sca: {
+      title: 'SCA 开源影响力大屏',
+      activityTitle: '< 活跃度趋势 >',
+      attentionTitle: '< 关注度趋势 >',
+      issueTitle: '< Issue 情况 >',
+      pullTitle: '< PR 情况 >',
+      relationTitle: '< 协作网络图 >',
+      participantNumberTitle: '< 项目参与人数 >',
+      participantRatioTitle: '< 开发者活跃比例 >',
+      participantRankListTitle: '< 开发者活跃排行 >',
+
+      projects: [
+        {
+          name: 'alibaba',
+          repos: [{ id: '112785414', name: 'alibaba/spring-cloud-alibaba' }],
+        }, {
+          name: 'gcp',
+          repos: [{ id: '86105877', name: 'spring-cloud/spring-cloud-gcp' }],
+        }, {
+          name: 'netflix',
+          repos: [{ id: '21741891', name: 'spring-cloud/spring-cloud-netflix' }],
+        }, {
+          name: 'aws',
+          repos: [{ id: '25823015', name: 'spring-cloud/spring-cloud-aws' }],
+        }, {
+          name: 'azure',
+          repos: [{ id: '130007651', name: 'microsoft/spring-cloud-azure' }],
+        },
+      ],
+
+      colors: [
+        '#03ffff',
+        '#33b4ff',
+        '#8b73ff',
+        '#cc529b',
+        '#eb6b63',
+        '#d6c25e',
+      ],
+
+      activityRankListNumber: 50,
+      participantRatioThreshold: 5,
+      participantRatioMin: 4,
+      participantRatioMax: 9,
+      dataPartition: 5,
+    },
+    rocketmq: {
+      title: 'RocketMQ 影响力大屏',
+      activityTitle: '< 活跃度趋势 >',
+      attentionTitle: '< 关注度趋势 >',
+      issueTitle: '< Issue 情况 >',
+      pullTitle: '< PR 情况 >',
+      relationTitle: '< 协作网络图 >',
+      participantNumberTitle: '< 项目参与人数 >',
+      participantRatioTitle: '< 开发者活跃比例 >',
+      participantRankListTitle: '< 开发者活跃排行 >',
+
+      projects: [
+        {
+          name: 'rocketmq',
+          repos: [{ id: '45717250', name: 'apache/rocketmq' }],
+        }, {
+          name: 'pytorch',
+          repos: [{ id: '65600975', name: 'pytorch/pytorch' }],
+        }, {
+          name: 'Paddle',
+          repos: [{ id: '65711522', name: 'PaddlePaddle/Paddle' }],
+        }, {
+          name: 'mxnet',
+          repos: [{ id: '34864402', name: 'apache/incubator-mxnet' }],
+        }, {
+          name: 'mmf',
+          repos: [{ id: '138831170', name: 'facebookresearch/mmf' }],
+        }, {
+          name: 'singa',
+          repos: [{ id: '33294317', name: 'apache/singa' }],
+        },
+      ],
+
+      colors: [
+        '#03ffff',
+        '#33b4ff',
+        '#8b73ff',
+        '#cc529b',
+        '#eb6b63',
+        '#d6c25e',
+      ],
+
+      activityRankListNumber: 50,
+      participantRatioThreshold: 5,
+      participantRatioMin: 4,
+      participantRatioMax: 9,
+      dataPartition: 5,
+    },
     ai: {
       title: '< AI 项目大屏 >',
       activityTitle: '< 活跃度趋势 >',
