@@ -183,23 +183,20 @@ export default (appInfo: EggAppInfo) => {
 
       projects: [
         {
-          name: 'rocketmq',
-          repos: [{ id: '45717250', name: 'apache/rocketmq' }],
+          name: 'RocketMQ',
+          repos: [{ id: '75164823', name: 'apache/rocketmq' }],
         }, {
-          name: 'pytorch',
-          repos: [{ id: '65600975', name: 'pytorch/pytorch' }],
+          name: 'RabbitMQ',
+          repos: [{ id: '924551', name: 'rabbitmq/rabbitmq-server' }],
         }, {
-          name: 'Paddle',
-          repos: [{ id: '65711522', name: 'PaddlePaddle/Paddle' }],
+          name: 'ActiveMQ',
+          repos: [{ id: '206387', name: 'apache/activemq' }],
         }, {
-          name: 'mxnet',
-          repos: [{ id: '34864402', name: 'apache/incubator-mxnet' }],
+          name: 'Pulsar',
+          repos: [{ id: '62117812', name: 'apache/pulsar' }],
         }, {
-          name: 'mmf',
-          repos: [{ id: '138831170', name: 'facebookresearch/mmf' }],
-        }, {
-          name: 'singa',
-          repos: [{ id: '33294317', name: 'apache/singa' }],
+          name: 'Kafka',
+          repos: [{ id: '2211243', name: 'apache/kafka' }],
         },
       ],
 
