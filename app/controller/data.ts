@@ -352,6 +352,7 @@ export default class DataController extends Controller {
           x: a.login,
           y: ratio,
         });
+        return true;
       }
       else {
         return false;
