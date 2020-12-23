@@ -4,7 +4,7 @@ import dateformat = require('dateformat');
 export default class DataController extends Controller {
 
   private getProj(): string {
-    return this.ctx.query['base_proj'] ?? 'nacos';
+    return this.ctx.query.base_proj ?? 'nacos';
   }
 
   private getConfig(): any {
@@ -12,8 +12,8 @@ export default class DataController extends Controller {
   }
 
   private getTime(): { startTime: Date, endTime: Date } | undefined {
-    const startTimeStr = this.ctx.query['start_time'];
-    const endTimeStr = this.ctx.query['end_time'];
+    const startTimeStr = this.ctx.query.start_time;
+    const endTimeStr = this.ctx.query.end_time;
     if (!startTimeStr || !endTimeStr) {
       return undefined;
     }
@@ -26,7 +26,7 @@ export default class DataController extends Controller {
     };
   }
 
-  private getProjects(): { name: string; repos: { id: string; name: string }[] }[] {
+  private getProjects(): Array<{ name: string; repos: Array<{ id: string; name: string }> }> {
     const config = this.getConfig();
     if (!config) return [];
     return config.projects;
@@ -58,7 +58,7 @@ export default class DataController extends Controller {
     const { startTime, endTime } = timeRange;
     const timeInterval = Math.round((endTime.getTime() - startTime.getTime()) / config.dataPartition);
     const projects = this.getProjects();
-    const result: { x: string; y: number; s: string }[] = [];
+    const result: Array<{ x: string; y: number; s: string }> = [];
     for (let i = 0; i <= config.dataPartition; i++) {
       const e = new Date(startTime.getTime() + i * timeInterval);
       const s = new Date(e.getTime() - timeInterval);
@@ -92,7 +92,7 @@ export default class DataController extends Controller {
     const { startTime, endTime } = timeRange;
     const timeInterval = Math.round((endTime.getTime() - startTime.getTime()) / config.dataPartition);
     const projects = this.getProjects();
-    const result: { x: string; y: number; s: string }[] = [];
+    const result: Array<{ x: string; y: number; s: string }> = [];
     for (let i = 0; i <= config.dataPartition; i++) {
       const e = new Date(startTime.getTime() + i * timeInterval);
       const s = new Date(e.getTime() - timeInterval);
@@ -125,7 +125,7 @@ export default class DataController extends Controller {
   public async relationData() {
     const config = this.getConfig();
     const timeRange = this.getTime();
-    const index = this.ctx.query['index'];
+    const index = this.ctx.query.index;
     if (!config || !timeRange || index === undefined) {
       this.ctx.body = 'Not found';
       return;
@@ -146,7 +146,7 @@ export default class DataController extends Controller {
       return -1;
     }).slice(0, 50);
 
-    const result: { nodes: { name: string; value: number; category: number }[]; links: { source: string; target: string; value: number }[] } = {
+    const result: { nodes: Array<{ name: string; value: number; category: number }>; links: Array<{ source: string; target: string; value: number }> } = {
       nodes: [],
       links: [],
     };
@@ -190,7 +190,7 @@ export default class DataController extends Controller {
     }
     const { startTime, endTime } = timeRange;
     const projects = this.getProjects();
-    const result: { y1: number; y2: number; x: string }[] = [];
+    const result: Array<{ y1: number; y2: number; x: string }> = [];
     projects.forEach(project => {
       const repos = project.repos;
       let openCount = 0, closeCount = 0;
@@ -227,7 +227,7 @@ export default class DataController extends Controller {
     }
     const { startTime, endTime } = timeRange;
     const projects = this.getProjects();
-    const result: { y1: number; y2: number; x: string }[] = [];
+    const result: Array<{ y1: number; y2: number; x: string }> = [];
     projects.forEach(project => {
       const repos = project.repos;
       let openCount = 0, mergeCount = 0;
@@ -264,7 +264,7 @@ export default class DataController extends Controller {
     }
     const { startTime, endTime } = timeRange;
     const projects = this.getProjects();
-    const result: { value: string; content: string }[] = [];
+    const result: Array<{ value: string; content: string }> = [];
     projects.forEach(project => {
       const repos = project.repos;
       let participantNumber = 0;
@@ -296,7 +296,7 @@ export default class DataController extends Controller {
 
   public async projectName() {
     const projects = this.getProjects();
-    const index = this.ctx.query['index'];
+    const index = this.ctx.query.index;
     if (!projects || index === undefined) {
       this.ctx.body = 'Not found';
       return;
@@ -305,14 +305,14 @@ export default class DataController extends Controller {
     this.ctx.body = [
       {
         value: projects[i % projects.length].name,
-      }
+      },
     ];
   }
 
   public async participantRatioData() {
     const config = this.getConfig();
     const timeRange = this.getTime();
-    const index = this.ctx.query['index'];
+    const index = this.ctx.query.index;
     if (!config || !timeRange || index === undefined) {
       this.ctx.body = 'Not found';
       return;
@@ -322,8 +322,8 @@ export default class DataController extends Controller {
     const i = Math.abs(parseInt(index));
     const projects = this.getProjects();
     const project = projects[i % projects.length];
-    const activityList: { login: string; score: number }[] = [];
-    const result: { x: string; y: number }[] = [];
+    const activityList: Array<{ login: string; score: number }> = [];
+    const result: Array<{ x: string; y: number }> = [];
     let totalActivity = 0;
 
     const activityData = this.ctx.service.calculator.activity(project.repos.map(r => this.app.dataMgr.getData(r.name)).filter(r => r !== undefined) as any, startTime, endTime);
@@ -384,7 +384,7 @@ export default class DataController extends Controller {
     }
     const { startTime, endTime } = timeRange;
     const projects = this.getProjects();
-    const rankList: { login: string, proj: string; score: number }[] = [];
+    const rankList: Array<{ login: string, proj: string; score: number }> = [];
     projects.forEach(project => {
       const activityData = this.ctx.service.calculator.activity(project.repos.map(r => this.app.dataMgr.getData(r.name)).filter(r => r !== undefined) as any, startTime, endTime);
       for (const [login, score] of activityData.activityMap) {
@@ -414,7 +414,7 @@ export default class DataController extends Controller {
     this.ctx.body = [
       {
         img: `${this.ctx.app.config.deploy.baseUrl}/legend?base_proj=${proj}`,
-        url: ''
+        url: '',
       },
     ];
   }
@@ -430,7 +430,7 @@ export default class DataController extends Controller {
     // let svgInnerContent = '<rect x="0" y="0" width="400" height="140" style="fill:#41495C99" />';
     let svgInnerContent = '';
     projects.forEach((project, index) => {
-      svgInnerContent += `<rect x="${20 + (index % 2) * 220}" y="${15 + (Math.floor(index / 2)) * 40}" width="200" height="30" fill="#000000CC" />`
+      svgInnerContent += `<rect x="${20 + (index % 2) * 220}" y="${15 + (Math.floor(index / 2)) * 40}" width="200" height="30" fill="#000000CC" />`;
       svgInnerContent += `<rect x="${22 + (index % 2) * 220}" y="${17 + (Math.floor(index / 2)) * 40}" width="26" height="26" fill="${colors[index]}" />`;
       svgInnerContent += `<text x="${135 + (index % 2) * 220}" y="${30 + (Math.floor(index / 2)) * 40}">${project.name}</text>`;
     });
@@ -457,7 +457,7 @@ ${svgInnerContent}
   public async startTime() {
     this.ctx.body = [
       {
-        date: dateformat(new Date(new Date().getTime() - 90 * 24 * 60 * 60 * 1000), 'yyyy-mm-dd', true),
+        date: dateformat(new Date(new Date().getTime() - 2 * 365 * 24 * 60 * 60 * 1000), 'yyyy-mm-dd', true),
       },
     ];
   }
@@ -465,7 +465,7 @@ ${svgInnerContent}
   public async endTime() {
     this.ctx.body = [
       {
-        date: dateformat(new Date(), 'yyyy-mm-dd', true),
+        date: dateformat(new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000), 'yyyy-mm-dd', true),
       },
     ];
   }
