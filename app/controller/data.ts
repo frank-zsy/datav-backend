@@ -151,11 +151,23 @@ export default class DataController extends Controller {
       links: [],
     };
 
+    if (activityArr.length === 0) {
+      this.ctx.body = [result];
+      return;
+    }
+
+    const maxActivity = Math.sqrt(activityArr[0][1]);
+    const max = 30;
+    const min = 3;
+    const valueRecal = (v: number) => {
+      return (v / maxActivity) * (max - min) + min;
+    };
+
     const series = 9;
     activityArr.forEach(a => {
       result.nodes.push({
         name: a[0],
-        value: Math.round(Math.sqrt(a[1])),
+        value: Math.round(valueRecal(Math.sqrt(a[1]))),
         category: (result.nodes.length % series) + 1,
       });
     });
