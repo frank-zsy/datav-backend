@@ -215,6 +215,54 @@ export default (appInfo: EggAppInfo) => {
       participantRatioMax: 9,
       dataPartition: 5,
     },
+    seata: {
+      title: 'Seata 影响力大屏',
+      activityTitle: '< 活跃度趋势 >',
+      attentionTitle: '< 关注度趋势 >',
+      issueTitle: '< Issue 情况 >',
+      pullTitle: '< PR 情况 >',
+      relationTitle: '< 协作网络图 >',
+      participantNumberTitle: '< 项目参与人数 >',
+      participantRatioTitle: '< 开发者活跃比例 >',
+      participantRankListTitle: '< 开发者活跃排行 >',
+
+      projects: [
+        {
+          name: 'Seata',
+          repos: [{ id: '163387337', name: 'seata/seata' }],
+        }, {
+          name: 'Servicecomb',
+          repos: [{ id: '161138654', name: 'apache/servicecomb-saga-actuator' }],
+        }, {
+          name: 'hmily',
+          repos: [{ id: '105110479', name: 'dromara/hmily' }],
+        }, {
+          name: 'lcn',
+          repos: [{ id: '110315174', name: 'codingapi/tx-lcn' }],
+        }, {
+          name: 'tcc',
+          repos: [{ id: '47442228', name: 'changmingxie/tcc-transaction' }],
+        }, {
+          name: 'EasyTrasaction',
+          repos: [{ id: '86445553', name: 'QNJR-GROUP/EasyTransaction' }],
+        },
+      ],
+
+      colors: [
+        '#03ffff',
+        '#33b4ff',
+        '#8b73ff',
+        '#cc529b',
+        '#eb6b63',
+        '#d6c25e',
+      ],
+
+      activityRankListNumber: 50,
+      participantRatioThreshold: 5,
+      participantRatioMin: 4,
+      participantRatioMax: 9,
+      dataPartition: 5,
+    },
     ai: {
       title: '< AI 项目大屏 >',
       activityTitle: '< 活跃度趋势 >',
