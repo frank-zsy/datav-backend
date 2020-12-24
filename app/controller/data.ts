@@ -174,10 +174,11 @@ export default class DataController extends Controller {
 
     relationData.forEach(r => {
       if (result.nodes.findIndex(n => n.name === r.login1) >= 0 && result.nodes.findIndex(n => n.name === r.login2) >= 0) {
+        const relationValue = Math.round(15 / r.relation);
         result.links.push({
           source: r.login1,
           target: r.login2,
-          value: Math.round(20 / r.relation),
+          value: Math.max(5, relationValue),
         });
       }
     });
