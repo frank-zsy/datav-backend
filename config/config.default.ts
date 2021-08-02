@@ -311,6 +311,43 @@ export default (appInfo: EggAppInfo) => {
       participantRatioMax: 9,
       dataPartition: 5,
     },
+    kubesphere: {
+      title: '< KubeSphere 项目大屏 >',
+      activityTitle: '< 活跃度趋势 >',
+      attentionTitle: '< 关注度趋势 >',
+      issueTitle: '< Issue 情况 >',
+      pullTitle: '< PR 情况 >',
+      relationTitle: '< 协作网络图 >',
+      participantNumberTitle: '< 项目参与人数 >',
+      participantRatioTitle: '< 开发者活跃比例 >',
+      participantRankListTitle: '< 开发者活跃排行 >',
+
+      projects: [
+        {
+          name: 'kubesphere',
+          repos: [{ id: '130430977', name: 'kubesphere/kubesphere' },
+          { id: '168629414', name: 'kubesphere/openelb' },
+          { id: '224581351', name: 'kubesphere/console' },
+          { id: '248386471', name: 'kubesphere/kubekey' },
+          { id: '196956614', name: 'kubesphere/ks-installer' }],
+        },
+      ],
+
+      colors: [
+        '#03ffff',
+        '#33b4ff',
+        '#8b73ff',
+        '#cc529b',
+        '#eb6b63',
+        '#d6c25e',
+      ],
+
+      activityRankListNumber: 50,
+      participantRatioThreshold: 5,
+      participantRatioMin: 4,
+      participantRatioMax: 9,
+      dataPartition: 5,
+    },
   };
 
   config.clickhouse = {
