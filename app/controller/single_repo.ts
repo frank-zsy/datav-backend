@@ -15,11 +15,11 @@ export default class SingleRepoController extends Controller {
   }
 
   public startTime() {
-    this.ctx.body = [{ value: '2022-01-01' }];
+    this.ctx.body = [{ date: '2022-01-01' }];
   }
 
   public endTime() {
-    this.ctx.body = [{ value: '2022-06-01' }];
+    this.ctx.body = [{ date: '2022-06-01' }];
   }
 
   public title() {
