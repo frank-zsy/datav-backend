@@ -10,7 +10,7 @@ export default class SingleRepoController extends Controller {
 
   private async process(type: string) {
     const name = this.getName();
-    const url = `${this.app.config.datav.ossUrl}single_repo_dashboard/${name.toLowerCase()}/${type}.json`;
+    const url = `${this.app.config.datav.ossUrl}${name.toLowerCase()}/${type}.json`;
     this.ctx.body = (await this.app.curl(url, { dataType: 'json' })).data;
   }
 
