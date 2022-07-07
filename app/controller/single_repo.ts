@@ -11,7 +11,7 @@ export default class SingleRepoController extends Controller {
   public title() {
     const name = this.ctx.query.r;
     if (!name) return this.ctx.body = [{ value: 'Repo not set' }];
-    this.ctx.body = [{ title: `${name} 项目数据大屏` }];
+    this.ctx.body = [{ value: `${name} 项目数据大屏` }];
   }
 
   public activity() {
