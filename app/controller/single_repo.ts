@@ -2,10 +2,11 @@ import { Controller } from 'egg';
 
 export default class SingleRepoController extends Controller {
 
-  private process(type: string) {
+  private async process(type: string) {
     const name = this.ctx.query.r;
     if (!name) return this.ctx.body = [{ value: 'Repo not set' }];
-    this.ctx.redirect(`${this.app.config.datav.ossUrl}single_repo_dashboard/${name.toLowerCase()}/${type}.json`);
+    const url = `${this.app.config.datav.ossUrl}single_repo_dashboard/${name.toLowerCase()}/${type}.json`;
+    this.ctx.body = (await this.app.curl(url, { dataType: 'json' })).data;
   }
 
   public title() {
@@ -14,28 +15,28 @@ export default class SingleRepoController extends Controller {
     this.ctx.body = [{ value: `${name} 项目数据大屏` }];
   }
 
-  public activity() {
-    this.process('activity');
+  public async activity() {
+    await this.process('activity');
   }
 
-  public attention() {
-    this.process('attention');
+  public async attention() {
+    await this.process('attention');
   }
 
-  public developers() {
-    this.process('developers');
+  public async developers() {
+    await this.process('developers');
   }
 
-  public issue() {
-    this.process('issue');
+  public async issue() {
+    await this.process('issue');
   }
 
-  public participants() {
-    this.process('participants');
+  public async participants() {
+    await this.process('participants');
   }
 
-  public pull() {
-    this.process('pull');
+  public async pull() {
+    await this.process('pull');
   }
 
 }
