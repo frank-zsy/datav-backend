@@ -1,5 +1,5 @@
 {
-  "name": "oss-datav-backend",
+  "name": "datav-backend",
   "version": "1.0.0",
   "description": "Backend for open source datav board",
   "private": true,
@@ -8,8 +8,8 @@
     "declarations": true
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-oss-datav-backend --workers=1",
-    "stop": "egg-scripts stop --title=egg-server-oss-datav-backend",
+    "start": "egg-scripts start --daemon --title=datav-backend",
+    "stop": "egg-scripts stop --title=oss-datav-backend",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
     "test-local": "egg-bin test",

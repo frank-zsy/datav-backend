@@ -9,5 +9,6 @@ export default (app: Application) => {
   router.get('/issue', controller.singleRepo.issue);
   router.get('/participants', controller.singleRepo.participants);
   router.get('/pull', controller.singleRepo.pull);
+  router.get('/title', controller.singleRepo.title);
 
 };
