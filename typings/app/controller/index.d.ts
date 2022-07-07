@@ -2,10 +2,10 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
-import ExportData from '../../../app/controller/data';
+import ExportSingleRepo from '../../../app/controller/single_repo';
 
 declare module 'egg' {
   interface IController {
-    data: ExportData;
+    singleRepo: ExportSingleRepo;
   }
 }

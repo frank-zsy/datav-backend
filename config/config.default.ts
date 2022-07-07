@@ -16,6 +16,7 @@ export default (appInfo: EggAppInfo) => {
   };
 
   config.datav = {
+    ossUrl: 'http://oss.com/',
     nacos: {
       title: 'Nacos 开源影响力大屏',
       activityTitle: '< 活跃度趋势 >',
@@ -348,25 +349,6 @@ export default (appInfo: EggAppInfo) => {
       participantRatioMax: 9,
       dataPartition: 5,
     },
-  };
-
-  config.clickhouse = {
-    server: {
-      host: 'localhost',
-      protocol: 'http:',
-      port: 8123,
-      format: 'JSON',
-    },
-    queryUrl: 'http://localhost/query',
-    db: 'github_log',
-    tables: ['year2015', 'year2016', 'year2017', 'year2018', 'year2019', 'year2020'],
-    // tables: ['year2020'],
-    columns: ['actor_id', 'actor_login', 'created_at', 'repo_id', 'type', 'action', 'pull_merged', 'issue_number'],
-    events: ['WatchEvent', 'ForkEvent', 'IssuesEvent', 'PullRequestEvent', 'IssueCommentEvent', 'PullRequestReviewCommentEvent'],
-  };
-
-  config.deploy = {
-    baseUrl: '',
   };
 
   config.cluster = {
