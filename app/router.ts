@@ -10,5 +10,7 @@ export default (app: Application) => {
   router.get('/participants', controller.singleRepo.participants);
   router.get('/pull', controller.singleRepo.pull);
   router.get('/title', controller.singleRepo.title);
+  router.get('/start', controller.singleRepo.startTime);
+  router.get('/end', controller.singleRepo.endTime);
 
 };

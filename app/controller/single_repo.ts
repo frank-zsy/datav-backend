@@ -14,6 +14,14 @@ export default class SingleRepoController extends Controller {
     this.ctx.body = (await this.app.curl(url, { dataType: 'json' })).data;
   }
 
+  public startTime() {
+    this.ctx.body = [{ value: '2022-01-01' }];
+  }
+
+  public endTime() {
+    this.ctx.body = [{ value: '2022-06-01' }];
+  }
+
   public title() {
     const name = this.getName();
     this.ctx.body = [{ value: `${name} 项目数据大屏` }];
