@@ -8,8 +8,8 @@
     "declarations": true
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=datav-backend",
-    "stop": "egg-scripts stop --title=oss-datav-backend",
+    "start": "egg-scripts start --daemon --title=egg-server-datav-backend",
+    "stop": "egg-scripts stop --title=egg-server-datav-backend",
     "dev": "egg-bin dev",
     "debug": "egg-bin debug",
     "test-local": "egg-bin test",
