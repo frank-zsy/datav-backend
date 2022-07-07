@@ -26,24 +26,16 @@ export default class SingleRepoController extends Controller {
     this.process('developers');
   }
 
-  public issueClosed() {
-    this.process('issueClosed');
-  }
-
-  public issueOpened() {
-    this.process('issueOpened');
+  public issue() {
+    this.process('issue');
   }
 
   public participants() {
     this.process('participants');
   }
 
-  public pullOpened() {
-    this.process('pullOpened');
-  }
-
-  public pullMerged() {
-    this.process('pullMerged');
+  public pull() {
+    this.process('pull');
   }
 
 }
