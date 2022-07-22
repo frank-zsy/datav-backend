@@ -7,6 +7,7 @@ export default (app: Application) => {
 
   router.get('/advance_data', controller.advanceDashboard.data);
   router.get('/advance_legend', controller.advanceDashboard.legend);
+  router.get('/advance_legend_request', controller.advanceDashboard.legendRequest);
 
   router.get('/start', controller.singleRepo.startTime);
   router.get('/end', controller.singleRepo.endTime);

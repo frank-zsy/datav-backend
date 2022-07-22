@@ -24,6 +24,16 @@ export default class AdvanceDashboard extends Controller {
     return (await this.app.curl(url, { dataType: 'json' })).data;
   }
 
+  public async legendRequest() {
+    const name = this.getName();
+    this.ctx.body = [
+      {
+        img: `${this.ctx.app.config.deploy.baseUrl}/advance_legend?r=${name}`,
+        url: '',
+      },
+    ];
+  }
+
   public async legend() {
     const colors = [
       '#03ffff',
