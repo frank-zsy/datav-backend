@@ -2,6 +2,20 @@ import { Controller } from 'egg';
 
 export default class SingleRepoController extends Controller {
 
+  public async data() {
+    const type = this.ctx.query.t;
+    if (type === 'title') {
+      const name = this.getName();
+      this.ctx.body = [{ value: `${name} 项目数据大屏` }];
+    } else {
+      try {
+        await this.process(type);
+      } catch {
+        this.ctx.body = 'Error';
+      }
+    }
+  }
+
   private getName() {
     let name = this.ctx.query.r;
     if (!name || name === ':r') name = 'x-lab2017/open-digger';
@@ -10,7 +24,7 @@ export default class SingleRepoController extends Controller {
 
   private async process(type: string) {
     const name = this.getName();
-    const url = `${this.app.config.datav.ossUrl}${name.toLowerCase()}/${type}.json`;
+    const url = `${this.app.config.datav.ossUrl}open_source_data/${name.toLowerCase()}/${type}.json`;
     this.ctx.body = (await this.app.curl(url, { dataType: 'json' })).data;
   }
 
@@ -20,35 +34,6 @@ export default class SingleRepoController extends Controller {
 
   public endTime() {
     this.ctx.body = [{ date: '2022-06-01' }];
-  }
-
-  public title() {
-    const name = this.getName();
-    this.ctx.body = [{ value: `${name} 项目数据大屏` }];
-  }
-
-  public async activity() {
-    await this.process('activity');
-  }
-
-  public async attention() {
-    await this.process('attention');
-  }
-
-  public async developers() {
-    await this.process('developers');
-  }
-
-  public async issue() {
-    await this.process('issue');
-  }
-
-  public async participants() {
-    await this.process('participants');
-  }
-
-  public async pull() {
-    await this.process('pull');
   }
 
 }
